@@ -19,12 +19,66 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ktv-Im-kfJ">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <color key="backgroundColor" name="YP Background"/>
-                                <color key="sectionIndexBackgroundColor" name="YP Background"/>
+                                <color key="backgroundColor" name="YP Black"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="217" id="JoL-Vc-KKT" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="217"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JoL-Vc-KKT" id="42s-dU-1HT">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="217"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="sGn-fP-3zL">
+                                                    <rect key="frame" x="16" y="4" width="361" height="209"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0c-1y-kLn" userLabel="LikeButton">
+                                                    <rect key="frame" x="333" y="4" width="44" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="llkeBittonOn"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2023г." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkS-Vo-7GO" userLabel="DataLebel">
+                                                    <rect key="frame" x="23.999999999999993" y="189" width="110.33333333333331" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" name="YP White"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="YP Black"/>
+                                            <constraints>
+                                                <constraint firstItem="W0c-1y-kLn" firstAttribute="top" secondItem="sGn-fP-3zL" secondAttribute="top" id="3BO-z5-cBA"/>
+                                                <constraint firstItem="sGn-fP-3zL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LkS-Vo-7GO" secondAttribute="trailing" constant="8" id="74b-Wv-ZXF"/>
+                                                <constraint firstItem="sGn-fP-3zL" firstAttribute="top" secondItem="42s-dU-1HT" secondAttribute="top" constant="4" id="CDc-nP-1Tm"/>
+                                                <constraint firstItem="sGn-fP-3zL" firstAttribute="leading" secondItem="42s-dU-1HT" secondAttribute="leading" constant="16" id="TX4-1C-aTe"/>
+                                                <constraint firstAttribute="trailing" secondItem="sGn-fP-3zL" secondAttribute="trailing" constant="16" id="bYd-mF-WOW"/>
+                                                <constraint firstAttribute="bottom" secondItem="sGn-fP-3zL" secondAttribute="bottom" constant="4" id="pTx-se-12r"/>
+                                                <constraint firstItem="LkS-Vo-7GO" firstAttribute="leading" secondItem="sGn-fP-3zL" secondAttribute="leading" constant="8" id="qar-01-lNm"/>
+                                                <constraint firstItem="sGn-fP-3zL" firstAttribute="trailing" secondItem="W0c-1y-kLn" secondAttribute="trailing" id="uTp-Nx-kjc"/>
+                                                <constraint firstItem="sGn-fP-3zL" firstAttribute="bottom" secondItem="LkS-Vo-7GO" secondAttribute="bottom" constant="8" id="vQc-SN-uym"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="YP Black"/>
+                                        <connections>
+                                            <outlet property="cellImage" destination="sGn-fP-3zL" id="mPH-f1-XMM"/>
+                                            <outlet property="dateLabel" destination="LkS-Vo-7GO" id="VBr-sD-obW"/>
+                                            <outlet property="likeButton" destination="W0c-1y-kLn" id="DSK-3R-E0G"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="LSc-4P-Pyx"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oCw-HC-L2G"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="YP Background"/>
+                        <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ktv-Im-kfJ" secondAttribute="bottom" id="9pJ-pU-lze"/>
                             <constraint firstItem="ktv-Im-kfJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JxU-58-wRm"/>
@@ -38,12 +92,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="-2"/>
+            <point key="canvasLocation" x="5.343511450381679" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
-        <namedColor name="YP Background">
-            <color red="0.68235294117647061" green="0.68627450980392157" blue="0.70588235294117641" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="0" width="200" height="132"/>
+        <image name="llkeBittonOn" width="44" height="44"/>
+        <namedColor name="YP Black">
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YP White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
