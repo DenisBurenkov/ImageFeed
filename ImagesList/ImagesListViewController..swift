@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  ImageFeed
-//
-//
-
 import UIKit
 
 final class ImagesListViewController: UIViewController {

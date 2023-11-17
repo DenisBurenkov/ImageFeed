@@ -1,9 +1,3 @@
-//
-//  SingleImageViewController.swift
-//  ImageFeed
-//
-//
-
 import UIKit
 
 final class SingleImageViewController: UIViewController {
@@ -19,7 +13,7 @@ final class SingleImageViewController: UIViewController {
     @IBOutlet private var scrollView: UIScrollView!
     
     override func viewDidLoad() {
-         super.viewDidLoad()
+        super.viewDidLoad()
         imageView.image = image
         scrollView.maximumZoomScale = 0.01
         scrollView.maximumZoomScale = 1.25
