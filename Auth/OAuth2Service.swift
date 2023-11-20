@@ -8,7 +8,7 @@ final class OAuth2Service {
             case httpResponseErrorCode(Int)
         }
         
-        var components = URLComponents(string: "https://unsplash.com/oauth/token")
+        var components = URLComponents(string: UnsplashAuthorizeURLStringToken)
         components?.queryItems = [URLQueryItem(name: "client_id", value: AccessKey),
                                   URLQueryItem(name: "client_secret", value: SecretKey),
                                   URLQueryItem(name: "redirect_uri", value: RedirectURI),
@@ -40,7 +40,7 @@ final class OAuth2Service {
                        let jsonString = String(data: data, encoding: .utf8) {
                         do {
                             let authResponse = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: Data(jsonString.utf8))
-                            let accessToken = authResponse.access_token
+                            let accessToken = authResponse.accessToken
                             
                             DispatchQueue.main.sync {
                                 completion(.success(accessToken))
