@@ -5,9 +5,10 @@ protocol AuthViewControllerDelegate: AnyObject {
 }
 
 final class AuthViewController: UIViewController {
-    private let showWebViewSegueIdentifier = "ShowWebView"
-
+    
     weak var delegate: AuthViewControllerDelegate?
+    private var showWebViewSegueIdentifier = "ShowWebView"
+    private let oauth2Service = OAuth2Service()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier {
@@ -25,7 +26,7 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
-        _ = OAuth2Service()
+//        _ = oauth2Service
     }
 
     

@@ -1,64 +1,67 @@
 import Foundation
 
 final class OAuth2Service {
+    
+    private let urlSession: URLSession
+    private let builder: URLReqestBuilder
+    private var curenTask: URLSessionTask?
+    private var lastCode: String?
+    private var storage: OAuth2TokenStorage
+    
+    init(
+        urlSession: URLSession = .shared,
+        builder: URLReqestBuilder = .shared,
+        storage: OAuth2TokenStorage = .shared
+    ) {
+        self.urlSession = urlSession
+        self.builder = builder
+        self.storage = storage
+    }
+    
+    var isAuthenticated: Bool {
+        storage.token != nil 
+    }
+    
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        enum NetworkError: Error {
-            case invalidResponse
-            case httpResponseErrorCode(Int)
+        guard !(code == lastCode && curenTask != nil) else {
+            return
         }
         
-        var components = URLComponents(string: UnsplashAuthorizeURLStringToken)
-        components?.queryItems = [URLQueryItem(name: "client_id", value: AccessKey),
-                                  URLQueryItem(name: "client_secret", value: SecretKey),
-                                  URLQueryItem(name: "redirect_uri", value: RedirectURI),
-                                  URLQueryItem(name: "code", value: code),
-                                  URLQueryItem(name: "grant_type", value: "authorization_code")
-        ]
-        
-        if let url = components?.url {
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
-                if let error {
-                    DispatchQueue.main.sync {
-                        completion(.failure(error))
-                    }
-                    return
-                }
-                
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    DispatchQueue.main.sync {
-                        completion(.failure(NetworkError.invalidResponse))
-                    }
-                    return
-                }
-                
-                if 200..<300 ~= httpResponse.statusCode {
-                    if let data,
-                       let jsonString = String(data: data, encoding: .utf8) {
-                        do {
-                            let authResponse = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: Data(jsonString.utf8))
-                            let accessToken = authResponse.accessToken
-                            
-                            DispatchQueue.main.sync {
-                                completion(.success(accessToken))
-                            }
-                        } catch {
-                            DispatchQueue.main.sync {
-                                completion(.failure(error))
-                            }
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.sync {
-                        completion(.failure(NetworkError.httpResponseErrorCode(httpResponse.statusCode)))
-                    }
-                }
-            })
-            
-            task.resume()
+        lastCode = code
+        guard let requst = makeRequest(code: code) else {
+            assertionFailure("Invalid requst")
+            completion(.failure(NetworkError.inavalidRequest))
+            return
         }
+        
+        let session = URLSession.shared
+        curenTask = session.objectTask(for: requst) { [weak self] (responce: Result<OAuthTokenResponseBody, Error>) in
+            self?.curenTask = nil
+            switch responce {
+            case .success(let body):
+                let authToken = body.accessToken
+                self?.storage.token = authToken
+                completion(.success(authToken))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
+
+
+
+extension OAuth2Service {
+    private func makeRequest(code: String) -> URLRequest? {
+        builder.makeHTTPRequset(
+            path: "/oauth/token"
+            + "?client_id=\(AccessKey)"
+            + "&&client_secret=\(SecretKey)"
+            + "&&redirect_uri=\(RedirectURI)"
+            + "&&code=\(code)"
+            + "&&grant_type=authorization_code",
+            httpMethod: "POST",
+            baseURLString: unsplashBaseURLString
+        )
     }
 }
