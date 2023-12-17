@@ -3,4 +3,54 @@
    uuid = "79891BCD-7151-4C52-8835-C35C1CE006B7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "833B2BF3-C034-4078-9161-9459D6664ECE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Auth/OAuth2Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "fetchOAuthToken(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "833B2BF3-C034-4078-9161-9459D6664ECE - 44484cdfffc522ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ImageFeed.OAuth2Service.fetchOAuthToken(_: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ImageFeed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denisburenoff/Documents/%D0%9F%D1%80%D0%BE%D1%8D%D0%BA%D1%82%D1%8B/ImageFeed/Auth/OAuth2Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "1360">
+               </Location>
+               <Location
+                  uuid = "833B2BF3-C034-4078-9161-9459D6664ECE - e7866ef676919402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;ImageFeed.OAuthTokenResponseBody, Swift.Error&gt;) -&gt; () in ImageFeed.OAuth2Service.fetchOAuthToken(_: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ImageFeed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denisburenoff/Documents/%D0%9F%D1%80%D0%BE%D1%8D%D0%BA%D1%82%D1%8B/ImageFeed/Auth/OAuth2Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
