@@ -1,5 +1,4 @@
 import UIKit
-import Kingfisher
 
 final class ProfileService {
     
@@ -14,7 +13,7 @@ final class ProfileService {
         self.builder = builder
     }
     
-    func fetchProfile(completion: @escaping (Result<Profile, Error>) -> Void){
+    func fetchProfile(completion: @escaping (Result<Profile, Error>) -> Void) {
         curenTask?.cancel()
         
         guard let requst = makeFethProfilRequst() else {
