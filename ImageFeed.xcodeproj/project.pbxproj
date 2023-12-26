@@ -117,11 +117,6 @@
 		52C1EF502AD083E800FAEDAA = {
 			isa = PBXGroup;
 			children = (
-				5222F4AF2B2C64D3002657A0 /* TabBar */,
-				52CD14982B03D5FB00AC3884 /* SplashViewController */,
-				52CD148B2AFB8E5700AC3884 /* Auth */,
-				5207BD642ADC3FB700979A94 /* ImagesList */,
-				52A9D93B2AE3CDA300927024 /* Profile */,
 				52C1EF5B2AD083E800FAEDAA /* ImageFeed */,
 				52C1EF5A2AD083E800FAEDAA /* Products */,
 			);
@@ -138,7 +133,11 @@
 		52C1EF5B2AD083E800FAEDAA /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
-				52CD14922B0114C000AC3884 /* OAuthTokenResponseBody.swift */,
+				52CD148B2AFB8E5700AC3884 /* Auth */,
+				52CD14982B03D5FB00AC3884 /* SplashViewController */,
+				5222F4AF2B2C64D3002657A0 /* TabBar */,
+				5207BD642ADC3FB700979A94 /* ImagesList */,
+				52A9D93B2AE3CDA300927024 /* Profile */,
 				52CD148E2AFB912200AC3884 /* Constants.swift */,
 				52C1EF5C2AD083E800FAEDAA /* AppDelegate.swift */,
 				52C1EF5E2AD083E800FAEDAA /* SceneDelegate.swift */,
@@ -161,6 +160,7 @@
 				52CD14942B01150900AC3884 /* OAuth2Service.swift */,
 				52CD14962B0115F100AC3884 /* OAuth2TokenStorage.swift */,
 				52527DC92B20902400452F56 /* UIBlockingProgressHUD.swift */,
+				52CD14922B0114C000AC3884 /* OAuthTokenResponseBody.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
