@@ -13,6 +13,11 @@
 		5222F4AE2B2B305B002657A0 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5222F4AD2B2B305B002657A0 /* SwiftKeychainWrapper */; };
 		5222F4B12B2C64E7002657A0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222F4B02B2C64E7002657A0 /* TabBarController.swift */; };
 		5222F4B32B2DDCBF002657A0 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222F4B22B2DDCBF002657A0 /* AlertPresenter.swift */; };
+<<<<<<< Updated upstream
+=======
+		524C443F2B3AF88600872D66 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524C443E2B3AF88600872D66 /* ImagesListService.swift */; };
+		524C44412B3AF8B800872D66 /* PhotoStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524C44402B3AF8B800872D66 /* PhotoStructure.swift */; };
+>>>>>>> Stashed changes
 		52527DC82B20661A00452F56 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 52527DC72B20661A00452F56 /* ProgressHUD */; };
 		52527DCA2B20902400452F56 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52527DC92B20902400452F56 /* UIBlockingProgressHUD.swift */; };
 		52527DCC2B20922C00452F56 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52527DCB2B20922C00452F56 /* ProfileService.swift */; };
@@ -43,6 +48,11 @@
 		5207BD622ADC3F3400979A94 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		5222F4B02B2C64E7002657A0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5222F4B22B2DDCBF002657A0 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
+=======
+		524C443E2B3AF88600872D66 /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
+		524C44402B3AF8B800872D66 /* PhotoStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStructure.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		52527DC92B20902400452F56 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		52527DCB2B20922C00452F56 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		52527DCD2B20938D00452F56 /* ProfilrStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilrStructure.swift; sourceTree = "<group>"; };
