@@ -20,7 +20,7 @@ final class ImagesListService {
         let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         lastLoadedPage = nextPage
         
-        guard let requst = makeHttpRequst(nextPage: nextPage) else {
+        guard let requst = makeRequst(nextPage: nextPage) else {
             assertionFailure("Invalid requst")
             return
         }
@@ -28,39 +28,26 @@ final class ImagesListService {
         let session = URLSession.shared
         curenTask = session.objectTask(for: requst) { [weak self] (responce: Result<[PhotoResult], Error>) in
             guard let self else { return }
-            
-            self.curenTask = nil
-            
             switch responce {
             case .success(let photoResults):
-              
-                let photosConvertor = photoResults.compactMap { photoResult -> Photo in
-                    
-                    return Photo(id: photoResult.id,
-                                 size: photoResult.size,
-                                 createdAt: photoResult.createdAt,
-                                 welcomeDescription: photoResult.description,
-                                 thumbImageURL: photoResult.urls.thumb,
-                                 largeImageURL: photoResult.urls.full,
-                                 isLiked: photoResult.isLiked
-                    )
-                }
-                photos.append(contentsOf: photosConvertor)
+                let newPhotos = photoResults.map { Photo(from: $0) }
+                self.photos.append(contentsOf: newPhotos)
                 NotificationCenter.default.post(name: ImagesListService.didChangeNotification,
                                                 object: self,
-                                                userInfo: ["Photos": photos])
-                
+                                                userInfo: ["Photos": self.photos])
+                self.curenTask = nil
             case .failure(let error):
-                assertionFailure("Failed to create Photo")
+                assertionFailure("Failed to create Photo from JSON \(error)", file: #file, line: #line)
+                self.curenTask = nil
             }
         }
     }
 }
 
 extension ImagesListService {
-    private func makeHttpRequst(nextPage: Int?) -> URLRequest? {
+    private func makeRequst(nextPage: Int) -> URLRequest? {
         builder.makeHTTPRequset(
-            path: "photos?page=\(String(describing: nextPage))&per_page=10",
+            path: "/photos?page=\(nextPage)",
             httpMethod: "GET",
             baseURLString: defaultBaseURL
         )
