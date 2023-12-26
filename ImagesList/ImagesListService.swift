@@ -20,7 +20,7 @@ final class ImagesListService {
         let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         lastLoadedPage = nextPage
         
-        guard let requst = makeHttpRequst(nextPage: nextPage) else {
+        guard let requst = makeRequst(nextPage: nextPage) else {
             assertionFailure("Invalid requst")
             return
         }
@@ -36,7 +36,6 @@ final class ImagesListService {
                                                 object: self,
                                                 userInfo: ["Photos": self.photos])
                 self.curenTask = nil
-                
             case .failure(let error):
                 assertionFailure("Failed to create Photo from JSON \(error)", file: #file, line: #line)
                 self.curenTask = nil
@@ -46,7 +45,7 @@ final class ImagesListService {
 }
 
 extension ImagesListService {
-    private func makeHttpRequst(nextPage: Int) -> URLRequest? {
+    private func makeRequst(nextPage: Int) -> URLRequest? {
         builder.makeHTTPRequset(
             path: "/photos?page=\(nextPage)",
             httpMethod: "GET",
